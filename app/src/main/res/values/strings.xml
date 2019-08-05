@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">FishKnow</string>
+    <string name="medir">MEDIR</string>
+    <string name="listaEspecies">LISTA DE ESPÉCIES</string>
+    <string name="equipamentosPermitidos">EQUIPAMENTOS</string>
+    <string name="nome">Nome: </string>
+    <string name="utilizacao">Utilização: </string>
+    <string name="imagemEspecie">Imagem Espécie: </string>
+    <string name="nomePopular">Nome Popular: </string>
+    <string name="nomeCientifico">Nome Científico: </string>
+    <string name="descricao">Descrição: </string>
+    <string name="familia">Família: </string>
+    <string name="genero">Gênero: </string>
+    <string name="ok">OK</string>
+    <string name="Medir2">Medir essa espécie usando o aplicativo</string>
+    <string name="need_permission">Camera permission is needed to run this application</string>
+    <string name="min">Tamanho minímo: </string>
+    <string name="max">Tamanho máximo: </string>
+    <string name="medirRegua">Caso escolha essa opção insira a medida em centimetros e clique em confirmar</string>
+
+    <string name="not_support">This device does not support AR. </string>
+
+    <string name="action_1">Delete</string>
+    <string name="action_2">Set as first</string>
+    <string name="action_3">Horizontal move</string>
+    <string name="action_4">Vertical move</string>
+
+    <string name="action_1_toast">Remove this cube.</string>
+    <string name="action_2_toast">Reorder and set this cube to the first.</string>
+    <string name="action_3_toast">Move on x and z axis.</string>
+    <string name="action_4_toast">Move on y axis.</string>
+
+</resources>

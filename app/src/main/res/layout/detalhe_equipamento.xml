@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/imageEqpt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/imagemEspecie" />
+
+    <LinearLayout
+        android:id="@+id/secaoInfo"
+        android:layout_width="match_parent"
+        android:layout_height="139dp"
+        android:layout_below="@+id/imageEqpt"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/secaoInfo"
+            android:layout_marginBottom="10dp"
+            android:drawableBottom="@color/colorPrimaryDark"
+            android:text="@string/nome"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/utilizacao"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/utilizacao"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</RelativeLayout>
