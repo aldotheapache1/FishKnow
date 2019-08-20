@@ -2,6 +2,7 @@ package com.FishKnow.arcoremeasure;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,21 +31,8 @@ public class PeixeAdapter extends RecyclerView.Adapter<PeixeAdapter.PeixesViewHo
         Peixes peixe = peixes.get(i);
 
         View view  =  null;
-        if(peixe.isExtincao() == false && peixe.isMinMax() == true){
-            view = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.peixes_layout_alt2,viewGroup, false);
-
-        }
-        else if(peixe.isExtincao() == false && peixe.isMinMax() == false){
-            view = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.peixes_layout,viewGroup, false);
-            //view = inflater.inflate(R.layout.peixes_layout, null);
-        }
-        else if(peixe.isExtincao() == true && peixe.isMinMax() == false){
-            view = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.peixes_layout_alt,viewGroup, false);
-        }
-
+        view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.peixes_layout,viewGroup, false);
         PeixesViewHolder peixesViewHolder = new PeixesViewHolder(view);
 
         return peixesViewHolder;
@@ -58,11 +46,14 @@ public class PeixeAdapter extends RecyclerView.Adapter<PeixeAdapter.PeixesViewHo
 
         peixesViewHolder.nomeCientifico.setText(peixe.getNomeCientifico());
         peixesViewHolder.nomePopular.setText(peixe.getNomePopular());
-
+        peixesViewHolder.nomePopular.setTextColor(Color.BLACK);
         if(peixe.isExtincao() == false && peixe.isMinMax() == true){
             peixesViewHolder.nomePopular.setText("Nome : " + peixe.getNomePopular() + ", Tamanho mínimo e máximo exigidos");
+            peixesViewHolder.nomePopular.setBackgroundResource(R.color.cor_peixe_amarelo);
+
         }
         else if(peixe.isExtincao() == false && peixe.isMinMax() == false){
+
             if(peixe.getNomePopular().equals("")) {
                 peixesViewHolder.nomePopular.setText(""+ peixe.getNomePopular());
             }
@@ -72,6 +63,8 @@ public class PeixeAdapter extends RecyclerView.Adapter<PeixeAdapter.PeixesViewHo
         }
 
         else if(peixe.isExtincao() == true && peixe.isMinMax() == false){
+            peixesViewHolder.nomePopular.setBackgroundResource(R.color.cor_peixe_vermelho);
+            peixesViewHolder.nomePopular.setTextColor(Color.WHITE);
             if(peixe.getNomePopular().equals("")) {
                 peixesViewHolder.nomePopular.setText(""+ peixe.getNomePopular()+"Proibida a captura");
             }
@@ -123,7 +116,6 @@ public class PeixeAdapter extends RecyclerView.Adapter<PeixeAdapter.PeixesViewHo
             familia = view.findViewById(R.id.familia);
             genero = view.findViewById(R.id.genero);
             image = view.findViewById(R.id.imageEqpt);
-
         }
 
     }

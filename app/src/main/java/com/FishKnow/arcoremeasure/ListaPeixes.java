@@ -35,32 +35,6 @@ public class ListaPeixes extends AppCompatActivity {
 
         carregarListaDePeixes();
 
-
-        //ArrayAdapter<Peixes> adapter = new peixesArrayAdapter(this, 0 , peixesLista);
-
-        /*ListView listView = (ListView) findViewById(R.id.idListView);
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Peixes peixes = peixesLista.get(position);
-
-                Intent intent = new Intent(ListaPeixes.this, DetalhePeixe.class);
-                intent.putExtra(Peixes.TAG_PEIXE, peixes);
-
-                if(peixes.isMinMax() == false) {
-
-                    intent.setClass(ListaPeixes.this, DetalhePeixe.class);
-                    startActivity(intent);
-                }
-                else{
-                    intent.putExtra(Peixes.TAG_PEIXE, peixes);
-                    intent.setClass(ListaPeixes.this, DetalhePeixeAlt.class);
-                    startActivity(intent);
-                }
-            }
-        });*/
         recyclerView = findViewById(R.id.idListView);
 
         // use this setting to improve performance if you know that changes
