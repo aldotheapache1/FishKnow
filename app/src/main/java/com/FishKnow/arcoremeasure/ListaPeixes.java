@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,7 +36,7 @@ public class ListaPeixes extends AppCompatActivity {
         carregarListaDePeixes();
 
 
-        ArrayAdapter<Peixes> adapter = new peixesArrayAdapter(this, 0 , peixesLista);
+        //ArrayAdapter<Peixes> adapter = new peixesArrayAdapter(this, 0 , peixesLista);
 
         /*ListView listView = (ListView) findViewById(R.id.idListView);
         listView.setAdapter(adapter);
@@ -65,13 +67,53 @@ public class ListaPeixes extends AppCompatActivity {
         // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
+        // usando um linear layout manager
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        // specify an adapter (see also next example)
+        //usando um divisor
+        recyclerView.addItemDecoration( new DividerItemDecoration(this, LinearLayout.VERTICAL));
+
+        // especificando um adapter personalizado
         PeixeAdapter mAdapter = new PeixeAdapter(peixesLista, this);
         recyclerView.setAdapter(mAdapter);
+
+        //evento de click
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
+                getApplicationContext(),
+                recyclerView,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    //click curto
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                    }
+                    //click longo
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        Peixes peixes = peixesLista.get(position);
+
+                        Intent intent = new Intent(ListaPeixes.this, DetalhePeixe.class);
+                        intent.putExtra(Peixes.TAG_PEIXE, peixes);
+
+                        if(peixes.isMinMax() == false) {
+
+                            intent.setClass(ListaPeixes.this, DetalhePeixe.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            intent.putExtra(Peixes.TAG_PEIXE, peixes);
+                            intent.setClass(ListaPeixes.this, DetalhePeixeAlt.class);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    }
+                }
+        ));
 
     }
 
