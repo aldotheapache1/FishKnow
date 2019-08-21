@@ -10,7 +10,7 @@
     <color name="gray">#999999</color>
     <color name="blue">#599eff</color>
     <color name="line">#aaaaaa</color>
-    <color name="white">#efefef</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="cor_peixe_amarelo">#ffff00</color>
     <color name="cor_peixe_vermelho">#CC0033</color>
 </resources>

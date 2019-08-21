@@ -56,6 +56,8 @@ public class PeixeAdapter extends RecyclerView.Adapter<PeixeAdapter.PeixesViewHo
 
             if(peixe.getNomePopular().equals("")) {
                 peixesViewHolder.nomePopular.setText(""+ peixe.getNomePopular());
+
+                peixesViewHolder.nomePopular.setBackgroundResource(R.color.white);
             }
             else {
                 peixesViewHolder.nomePopular.setText("Nome: " + peixe.getNomePopular());

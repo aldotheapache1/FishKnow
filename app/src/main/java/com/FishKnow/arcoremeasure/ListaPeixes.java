@@ -93,11 +93,11 @@ public class ListaPeixes extends AppCompatActivity {
 
     private void carregarListaDePeixes() {
         // PEIXES DE CAPTURA PROIBIDA
-        peixesLista.add(new Peixes("","sdf","", "",
+        peixesLista.add(new Peixes("Teste proibido","sdf","", "",
                 "ser ", "mmm", true, false, 0.0, 0.0));
 
         // PEIXES DE CAPTURA PERMITIDA E SEM TAMANHO MINIMO E MAXIMO
-        peixesLista.add(new Peixes("",",.,m","Consideram-se iscas vivas todos os organismos\n" +
+        peixesLista.add(new Peixes("teste sem minimo e maximo",",.,m","Consideram-se iscas vivas todos os organismos\n" +
                 "aquáticos e terrestres nativos da respectiva bacia\n" +
                 "hidrográfica, utilizada para pesca profissional e\n" +
                 "esportivaA atividade de captura de iscas vivas somente poderá", "",
