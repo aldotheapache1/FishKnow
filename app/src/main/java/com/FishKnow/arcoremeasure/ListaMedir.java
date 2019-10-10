@@ -131,7 +131,7 @@ public class ListaMedir extends AppCompatActivity {
 
         peixesLista.add(new Peixes("Piau Três Pintas", "Leporinus friderici", "Bastante ativo durante a estação chuvosa, invadem zonas inundadas onde frequentemente são capturados com redes, enquanto na estação seca, estão confinados nas partes mais profundas dos rios, onde são capturados com varas de pesca. Variando a região e populações, poderá apresentar diferenças em sua coloração. No Brasil é conhecido por sob uma grande variedade de nomes como Acaru Paca, Acaru Cabeça Gorda, Araçu, Piabam Piapara, Piau, Piau Cabeça Gorda, Piau Listrado, Piau Três Pintas, Piava e Uaracu.", "leporinusfriderici", "Anostomidae", "Leporinus", false, true, 25.0, indeterminado));
 
-        peixesLista.add(new Peixes("Pacupeva", "Mylossoma paraguayensis", "", "foto", "Serrasalmidae", "Mylossoma", false, true, 20.0, indeterminado));
+        peixesLista.add(new Peixes("Pacupeva", "Mylossoma paraguayensis", "", "mylossomaparaguayensis", "Serrasalmidae", "Mylossoma", false, true, 20.0, indeterminado));
 
         peixesLista.add(new Peixes("Palmito", "Ageneiosus inermis", "", "ageneiosusinermis", "Auchenipteridae", "Ageneiosus", false, true, 35.0, indeterminado));
 

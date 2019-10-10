@@ -1,6 +1,7 @@
 package com.FishKnow.arcoremeasure;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -72,7 +74,7 @@ public class ArMeasureActivity extends AppCompatActivity {
     private static final int MAX_CUBE_COUNT = 16;
     private static final int LIMIT_CUBE_COUNT = 2;
 
-    // Rendering. The Renderers are created here, and initialized when the GL surface is created.
+
     private GLSurfaceView surfaceView = null;
 
     private boolean installRequested;
@@ -112,7 +114,6 @@ public class ArMeasureActivity extends AppCompatActivity {
             R.id.iv_cube16
     };
 
-    // Tap handling and UI.
     private ArrayBlockingQueue<MotionEvent> queuedSingleTaps = new ArrayBlockingQueue<>(MAX_CUBE_COUNT);
     private ArrayBlockingQueue<MotionEvent> queuedLongPress = new ArrayBlockingQueue<>(MAX_CUBE_COUNT);
     private final ArrayList<Anchor> anchors = new ArrayList<>();
@@ -173,9 +174,9 @@ public class ArMeasureActivity extends AppCompatActivity {
     private GestureDetector.SimpleOnGestureListener gestureDetectorListener = new GestureDetector.SimpleOnGestureListener() {
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
-            // Queue tap if there is space. Tap is lost if queue is full.
+
             queuedSingleTaps.offer(e);
-//            log(TAG, "onSingleTapUp, e=" + e.getRawX() + ", " + e.getRawY());
+
             return true;
         }
 
@@ -204,6 +205,17 @@ public class ArMeasureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Atenção!");
+        alertDialogBuilder.setMessage("Está é a tela de medição, a aplicação ira detectar uma superficie plana, após isso uma parte dessa superficie será marcada com uma grade branca, isso significa que o mapeamento foi um sucesso, a seguir é só definir os pontos dentro da área mapeada nas extremidades do peixe.");
+        alertDialogBuilder.setPositiveButton(" Ok ", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialogBuilder.show();
 
         tv_result = findViewById(R.id.tv_result);
         fab = findViewById(R.id.fab);
@@ -278,7 +290,6 @@ public class ArMeasureActivity extends AppCompatActivity {
         }
         surfaceView = findViewById(R.id.surfaceview);
 
-        // Set up tap listener.
         gestureDetector = new GestureDetector(this, gestureDetectorListener);
         surfaceView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -310,8 +321,6 @@ public class ArMeasureActivity extends AppCompatActivity {
                         break;
                 }
 
-                // ARCore requires camera permissions to operate. If we did not yet obtain runtime
-                // permission on Android M and above, now is a good time to ask the user for it.
                 if (!CameraPermissionHelper.hasCameraPermission(this)) {
                     CameraPermissionHelper.requestCameraPermission(this);
                     return;
@@ -350,7 +359,6 @@ public class ArMeasureActivity extends AppCompatActivity {
         }
 
         showLoadingMessage();
-        // Note that order matters - see the note in onPause(), the reverse applies here.
         try {
             session.resume();
         } catch (CameraNotAvailableException e) {
@@ -391,7 +399,7 @@ public class ArMeasureActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
         logStatus("onWindowFocusChanged()");
         if (hasFocus) {
-            // Standard Android full-screen functionality.
+
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -474,24 +482,24 @@ public class ArMeasureActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line,
                 sortList);
-        // the drop down list is a list view
+
         ListView listViewSort = new ListView(this);
-        // set our adapter and pass our pop up window contents
+
         listViewSort.setAdapter(adapter);
         listViewSort.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
-                    case 3:// move vertical axis
+                    case 3:
                         toast(R.string.action_4_toast);
                         break;
-                    case 0:// delete
+                    case 0:
                         toast(R.string.action_1_toast);
                         break;
-                    case 1:// set as first
+                    case 1:
                         toast(R.string.action_2_toast);
                         break;
-                    case 2:// move horizontal axis
+                    case 2:
                     default:
                         toast(R.string.action_3_toast);
                         break;
@@ -499,12 +507,12 @@ public class ArMeasureActivity extends AppCompatActivity {
                 return true;
             }
         });
-        // set on item selected
+
         listViewSort.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
-                    case 3:// move vertical axis
+                    case 3:
                         isVerticalMode = true;
                         popupWindow.dismiss();
                         break;
@@ -514,13 +522,13 @@ public class ArMeasureActivity extends AppCompatActivity {
                         fab.hide();
                         conf.hide();
                         break;
-                    case 1:// set as first
+                    case 1:
                         glSerfaceRenderer.setNowSelectionAsFirst();
                         popupWindow.dismiss();
                         fab.hide();
                         conf.hide();
                         break;
-                    case 2:// move horizontal axis
+                    case 2:
                     default:
                         isVerticalMode = false;
                         popupWindow.dismiss();
@@ -529,12 +537,11 @@ public class ArMeasureActivity extends AppCompatActivity {
 
             }
         });
-        // some other visual settings for popup window
+
         popupWindow.setFocusable(true);
         popupWindow.setWidth((int)(getResources().getDisplayMetrics().widthPixels * 0.4f));
-        // popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.white));
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-        // set the listview as popup content
+
         popupWindow.setContentView(listViewSort);
         return popupWindow;
     }
@@ -546,7 +553,7 @@ public class ArMeasureActivity extends AppCompatActivity {
         private int nowTouchingPointIndex = DEFAULT_VALUE;
         private int viewWidth = 0;
         private int viewHeight = 0;
-        // according to cube.obj, cube diameter = 0.02f
+
         private final float cubeHitAreaRadius = 0.08f;
         private final float[] centerVertexOfCube = {0f, 0f, 0f, 1};
         private final float[] vertexResult = new float[4];
@@ -565,13 +572,13 @@ public class ArMeasureActivity extends AppCompatActivity {
             logStatus("onSurfaceCreated()");
             GLES20.glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
-            // Create the texture and pass it to ARCore session to be filled during update().
+
             backgroundRenderer.createOnGlThread(context);
             if (session != null) {
                 session.setCameraTextureName(backgroundRenderer.getTextureId());
             }
 
-            // Prepare the other rendering objects.
+
             try {
                 rectRenderer = new RectanglePolygonRenderer();
                 cube.createOnGlThread(context, ASSET_NAME_CUBE_OBJ, ASSET_NAME_CUBE);
@@ -954,10 +961,10 @@ public class ArMeasureActivity extends AppCompatActivity {
         }
 
         private double getDistance(Pose pose0, Pose pose1){
-            float dx = pose0.tx() - pose1.tx();
-            float dy = pose0.ty() - pose1.ty();
-            float dz = pose0.tz() - pose1.tz();
-            return Math.sqrt(dx * dx + dz * dz + dy * dy);
+            float DX = pose0.tx() - pose1.tx();
+            float DY = pose0.ty() - pose1.ty();
+            float DZ = pose0.tz() - pose1.tz();
+            return Math.sqrt(DX * DX + DZ * DZ + DY * DY);
         }
 
         private void showResult(final String result){

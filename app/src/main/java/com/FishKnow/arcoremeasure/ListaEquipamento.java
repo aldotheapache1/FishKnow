@@ -31,7 +31,7 @@ public class ListaEquipamento extends AppCompatActivity {
 
         AlertDialog.Builder builder1 = new AlertDialog.Builder(ListaEquipamento.this);
         builder1.setTitle("Atenção!");
-        builder1.setMessage(Html.fromHtml("Aqui estão presentes alguns equipamentos PROIBIDOS de serem utilizados, para mais informações: Instituto de Meio Ambiente de Mato Grosso do Sul,<a href=\"http://www.imasul.ms.gov.br/\"> IMASUL</a>"));
+        builder1.setMessage(Html.fromHtml("Aqui estão presentes alguns equipamentos PROIBIDOS de serem utilizados, para mais informações: Instituto de Meio Ambiente de Mato Grosso do Sul, <a href=\"http://www.imasul.ms.gov.br/\">IMASUL</a>"));
 
         builder1.setCancelable(false);
         builder1.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -43,7 +43,7 @@ public class ListaEquipamento extends AppCompatActivity {
         AlertDialog Alert1 = builder1.create();
         Alert1 .show();
         ((TextView)Alert1.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
-      
+
         equipamentoLista.add(new Equipamentos("Tarrafa", "É uma rede de pesca circular com pequenos pesos distribuídos em torno de toda a circunferência da malha. A tarrafa é arremessada geralmente com as mãos, de tal maneira que esta se abra o máximo possível antes de cair na água. Ao entrar em contato com a água, a rede afunda imediatamente.", "tarrafa", false));
         equipamentoLista.add(new Equipamentos("Anzol de galho", "Como o nome já diz, se trata de um anzol amarrado em um galho, o uso é proibido, pois não afeta somente os peixes, mas também outros animais que transitam pelo local.", "anzoldegalho", false));
         equipamentoLista.add(new Equipamentos("Rede", "Estica-se a rede e aguarda um animal se enroscar", "rede", false));

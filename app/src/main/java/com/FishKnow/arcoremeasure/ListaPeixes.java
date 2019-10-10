@@ -2,12 +2,16 @@ package com.FishKnow.arcoremeasure;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +36,21 @@ public class ListaPeixes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_peixes);
+
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(ListaPeixes.this);
+        builder1.setTitle("Atenção!");
+        builder1.setMessage(Html.fromHtml("Está é a lista de espécies, para acessar mais detalhes sobre um peixe, clique sobre ele e segure"));
+
+        builder1.setCancelable(false);
+        builder1.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog Alert1 = builder1.create();
+        Alert1 .show();
+        ((TextView)Alert1.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
 
         carregarListaDePeixes();
 
@@ -93,15 +112,20 @@ public class ListaPeixes extends AppCompatActivity {
 
     private void carregarListaDePeixes() {
         // PEIXES DE CAPTURA PROIBIDA
-        peixesLista.add(new Peixes("Teste proibido", "sdf", "", "",
-                "ser ", "mmm", true, false, 0.0, 0.0));
+        peixesLista.add(new Peixes("Dourado", "Salminus brasiliensis", "É um peixe de escamas. Cada escama tem um pequeno risco preto no meio, formando linhas longitudinais da cabeça à cauda. \n" +
+                "Possui uma coloração dourada por todo o corpo, com reflexos avermelhados. \n" +
+                "Tem uma cabeça grande, com uma boca que alcança a metade desta, repleta de caninos em forma cônica. \n" +
+                "Possui nadadeira caudal bastante robusta. Existem relatos de espécimes capturados com 130 cm de comprimento e peso de mais de 30 quilos.\n" +
+                "S. brasiliensis e S. maxillosus são bastante semelhantes, sendo que o primeiro, além de ser maior, \n" +
+                "apresenta uma coloração dourada com reflexos avermelhados, enquanto o segundo é dourado com as nadadeiras alaranjadas.", "salminusbrasiliensis",
+                "Characidae", "Salminus", true, false, 0.0, 0.0));
 
         // PEIXES DE CAPTURA PERMITIDA E SEM TAMANHO MINIMO E MAXIMO
-        peixesLista.add(new Peixes("teste sem minimo e maximo", ",.,m", "Consideram-se iscas vivas todos os organismos\n" +
-                "aquáticos e terrestres nativos da respectiva bacia\n" +
-                "hidrográfica, utilizada para pesca profissional e\n" +
-                "esportivaA atividade de captura de iscas vivas somente poderá", "",
-                "ser ", "", false, false, 0.0, 0.0));
+     //   peixesLista.add(new Peixes("teste sem minimo e maximo", ",.,m", "Consideram-se iscas vivas todos os organismos\n" +
+       //         "aquáticos e terrestres nativos da respectiva bacia\n" +
+         //       "hidrográfica, utilizada para pesca profissional e\n" +
+           //     "esportivaA atividade de captura de iscas vivas somente poderá", "",
+             //   "ser ", "", false, false, 0.0, 0.0));
 
 
         //PEIXES COM TAMANHOS MÍNIMOS/MÁXIMOS PARA CAPTURA - (DECRETO ESTADUAL n° 15.166 de 21 de fevereiro de 2019)
@@ -194,7 +218,7 @@ public class ListaPeixes extends AppCompatActivity {
 
         peixesLista.add(new Peixes("Piau Três Pintas", "Leporinus friderici", "Bastante ativo durante a estação chuvosa, invadem zonas inundadas onde frequentemente são capturados com redes, enquanto na estação seca, estão confinados nas partes mais profundas dos rios, onde são capturados com varas de pesca. Variando a região e populações, poderá apresentar diferenças em sua coloração. No Brasil é conhecido por sob uma grande variedade de nomes como Acaru Paca, Acaru Cabeça Gorda, Araçu, Piabam Piapara, Piau, Piau Cabeça Gorda, Piau Listrado, Piau Três Pintas, Piava e Uaracu.", "leporinusfriderici", "Anostomidae", "Leporinus", false, true, 25.0, indeterminado));
 
-        peixesLista.add(new Peixes("Pacupeva", "Mylossoma paraguayensis", "", "foto", "Serrasalmidae", "Mylossoma", false, true, 20.0, indeterminado));
+        peixesLista.add(new Peixes("Pacupeva", "Mylossoma paraguayensis", "", "mylossomaparaguayensis", "Serrasalmidae", "Mylossoma", false, true, 20.0, indeterminado));
 
         peixesLista.add(new Peixes("Palmito", "Ageneiosus inermis", "", "ageneiosusinermis", "Auchenipteridae", "Ageneiosus", false, true, 35.0, indeterminado));
 
