@@ -16,7 +16,7 @@
     <string name="need_permission">Camera permission is needed to run this application</string>
     <string name="min">Tamanho minímo: </string>
     <string name="max">Tamanho máximo: </string>
-    <string name="medirRegua">Caso escolha essa opção insira a medida em centimetros e clique em confirmar</string>
+    <string name="medirRegua">Insira a medida em centimetros e clique em confirmar</string>
 
     <string name="not_support">This device does not support AR. </string>
 

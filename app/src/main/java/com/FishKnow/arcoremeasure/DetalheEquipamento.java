@@ -21,7 +21,8 @@ public class DetalheEquipamento extends AppCompatActivity {
 
 
         String image = intent.getStringExtra("imageEqpt");
-        int imageID = this.getResources().getIdentifier(image, "drawable", this.getPackageName());
+        String imageFull = intent.getStringExtra("imageFull");
+        int imageID = this.getResources().getIdentifier(imageFull, "drawable", this.getPackageName());
 
         imageView.setImageResource(imageID);
 

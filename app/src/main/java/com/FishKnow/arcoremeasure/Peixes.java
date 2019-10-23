@@ -19,10 +19,11 @@ public class Peixes implements Serializable {
     private Double min;
     private Double max;
     private Double medida;
+    private String imageFull;
 
 
 
-    Peixes(String nomePopular, String nomeCientifico, String descricao, String image, String familia, String genero, boolean extincao, boolean minMax, Double min, Double max){
+    Peixes(String nomePopular, String nomeCientifico, String descricao, String image, String familia, String genero, boolean extincao, boolean minMax, Double min, Double max, String imageFull){
         this.nomePopular = nomePopular;
         this.nomeCientifico = nomeCientifico;
         this.descricao = descricao;
@@ -33,6 +34,7 @@ public class Peixes implements Serializable {
         this.minMax = minMax;
         this.min = min;
         this.max = max;
+        this.imageFull = imageFull;
     }
 
     public String getNomePopular() {
@@ -77,6 +79,14 @@ public class Peixes implements Serializable {
 
     public void setMedida(Double medida) {
         this.medida = medida;
+    }
+
+    public String getImageFull() {
+        return imageFull;
+    }
+
+    public void setMedida(String imageFull) {
+        this.imageFull = imageFull;
     }
 }
 

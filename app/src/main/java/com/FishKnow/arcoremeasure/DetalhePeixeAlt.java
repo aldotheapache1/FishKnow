@@ -47,7 +47,7 @@ public class DetalhePeixeAlt extends AppCompatActivity {
 
         peixe = (Peixes) getIntent().getSerializableExtra("peixe");
 
-        String image = peixe.getImage();
+        String image = peixe.getImageFull();
         int imageID = this.getResources().getIdentifier(image, "drawable", this.getPackageName());
 
 

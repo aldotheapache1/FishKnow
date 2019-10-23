@@ -27,7 +27,7 @@ public class DetalhePeixe extends AppCompatActivity {
 
         Peixes peixes = (Peixes) getIntent().getSerializableExtra(Peixes.TAG_PEIXE);
 
-        String image = peixes.getImage();
+        String image = peixes.getImageFull();
         int imageID = this.getResources().getIdentifier(image, "drawable", this.getPackageName());
 
 

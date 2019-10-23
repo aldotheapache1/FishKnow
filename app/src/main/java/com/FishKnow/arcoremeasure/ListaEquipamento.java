@@ -44,17 +44,17 @@ public class ListaEquipamento extends AppCompatActivity {
         Alert1 .show();
         ((TextView)Alert1.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
 
-        equipamentoLista.add(new Equipamentos("Tarrafa", "É uma rede de pesca circular com pequenos pesos distribuídos em torno de toda a circunferência da malha. A tarrafa é arremessada geralmente com as mãos, de tal maneira que esta se abra o máximo possível antes de cair na água. Ao entrar em contato com a água, a rede afunda imediatamente.", "tarrafa", false));
-        equipamentoLista.add(new Equipamentos("Anzol de galho", "Como o nome já diz, se trata de um anzol amarrado em um galho, o uso é proibido, pois não afeta somente os peixes, mas também outros animais que transitam pelo local.", "anzoldegalho", false));
-        equipamentoLista.add(new Equipamentos("Rede", "Estica-se a rede e aguarda um animal se enroscar", "rede", false));
-        equipamentoLista.add(new Equipamentos("Cercado", "O cercado nada mais é do que uma estrutura cercada por tela, em que os peixes entram e não conseguem sair.", "cercado", false));
-        equipamentoLista.add(new Equipamentos("Boia", "A boia é uma ferramenta que flutua sobre a água enquanto um anzol fica submerso.", "boia", false));
-        equipamentoLista.add(new Equipamentos("Gancho ou garateia, pelo processo de lambada ", "O processo de lambada consiste em, deixar o gancho afundar e depois puxar ao sentir um peixe preso, é proibido pois muitas vezes apenas machuca os animais.", "garrateia", false));
-        equipamentoLista.add(new Equipamentos("Fisga", "É semelhante a um tridente, é utilizado para perfurar o animal.", "fisga", false));
-        equipamentoLista.add(new Equipamentos("Arpão", "O arpão pode ser utilizado de duas formas: ser atirado por um lancador de arpão ou ser lançado com as mãos.", "arpao", false));
-        equipamentoLista.add(new Equipamentos("Espinhel", "Consiste na junção de vários anzóis esticados em uma linha.", "espinhel", false));
-        equipamentoLista.add(new Equipamentos("Flecha", "A flecha é lançada com a utilização de do arco para atingir o peixe.", "flecha", false));
-        equipamentoLista.add(new Equipamentos("Covo", "Estrutura em que o peixe entra com facilidade, mas não consegue sair.", "covo", false));
+        equipamentoLista.add(new Equipamentos("Tarrafa", "É uma rede de pesca circular com pequenos pesos distribuídos em torno de toda a circunferência da malha. A tarrafa é arremessada geralmente com as mãos, de tal maneira que esta se abra o máximo possível antes de cair na água. Ao entrar em contato com a água, a rede afunda imediatamente.", "tarrafa", false, "tarrafa1"));
+        equipamentoLista.add(new Equipamentos("Anzol de galho", "Como o nome já diz, se trata de um anzol amarrado em um galho, o uso é proibido, pois não afeta somente os peixes, mas também outros animais que transitam pelo local.", "anzoldegalho", false, "anzoldegalho1"));
+        equipamentoLista.add(new Equipamentos("Rede", "Estica-se a rede e aguarda um animal se enroscar", "rede", false, "rede1"));
+        equipamentoLista.add(new Equipamentos("Cercado", "O cercado nada mais é do que uma estrutura cercada por tela, em que os peixes entram e não conseguem sair.", "cercado", false, "cercado1"));
+        equipamentoLista.add(new Equipamentos("Boia", "A boia é uma ferramenta que flutua sobre a água enquanto um anzol fica submerso.", "boia", false, "boia"));
+        equipamentoLista.add(new Equipamentos("Gancho ou garateia, pelo processo de lambada ", "O processo de lambada consiste em, deixar o gancho afundar e depois puxar ao sentir um peixe preso, é proibido pois muitas vezes apenas machuca os animais.", "garrateia", false, "garrateia1"));
+        equipamentoLista.add(new Equipamentos("Fisga", "É semelhante a um tridente, é utilizado para perfurar o animal.", "fisga", false, "fisga1"));
+        equipamentoLista.add(new Equipamentos("Arpão", "O arpão pode ser utilizado de duas formas: ser atirado por um lancador de arpão ou ser lançado com as mãos.", "arpao", false, "arpao1"));
+        equipamentoLista.add(new Equipamentos("Espinhel", "Consiste na junção de vários anzóis esticados em uma linha.", "espinhel", false, "espinhel1"));
+        equipamentoLista.add(new Equipamentos("Flecha", "A flecha é lançada com a utilização de do arco para atingir o peixe.", "flecha", false, "flecha1"));
+        equipamentoLista.add(new Equipamentos("Covo", "Estrutura em que o peixe entra com facilidade, mas não consegue sair.", "covo", false,"covo1"));
         ArrayAdapter<Equipamentos> adapter = new ListaEquipamento.equipamentosArrayAdapter(this, 0, equipamentoLista);
 
         ListView listView = findViewById(R.id.idListView);
@@ -70,6 +70,7 @@ public class ListaEquipamento extends AppCompatActivity {
                 intent.putExtra("imageEqpt", equipamentos.getImage());
                 intent.putExtra("nome", equipamentos.getNome());
                 intent.putExtra("utilizacao", equipamentos.getUtilizacao());
+                intent.putExtra("imageFull", equipamentos.getImageFull());
 
                     intent.setClass(ListaEquipamento.this, DetalheEquipamento.class);
                     startActivity(intent);

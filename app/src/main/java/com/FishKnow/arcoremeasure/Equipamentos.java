@@ -5,12 +5,14 @@ public class Equipamentos {
     private String utilizacao;
     private String image;
     private boolean permitido;
+    private String imageFull;
 
-    Equipamentos(String nome, String utilizacao, String image, boolean permitido){
+    Equipamentos(String nome, String utilizacao, String image, boolean permitido, String imageFull){
         this.nome = nome;
         this.utilizacao = utilizacao;
         this.image = image;
         this.permitido = permitido;
+        this.imageFull = imageFull;
     }
 
     public String getNome() {
@@ -27,6 +29,10 @@ public class Equipamentos {
 
     public boolean isPermitido() {
         return permitido;
+    }
+
+    public String getImageFull() {
+        return imageFull;
     }
 
 }
